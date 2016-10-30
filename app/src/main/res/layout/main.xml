@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/dispositivo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Detectar Dispositivos" android:onClick="btnClickHandler"/>
+    <Button
+        android:id="@+id/sendFile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enviar Archivo" android:onClick="btnSend"/>
+    <Button
+        android:id="@+id/nextPage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pagina Siguiente" android:onClick="btnNext"/>
+    <Button
+        android:id="@+id/previusPage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pagina Anterior" android:onClick="btnPrevius"/>
+
+
+
+</LinearLayout>
