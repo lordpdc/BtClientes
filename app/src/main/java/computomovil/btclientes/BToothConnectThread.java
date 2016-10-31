@@ -49,6 +49,7 @@ public class BToothConnectThread {
 			in = socket.getInputStream();
 		}catch(IOException connectException){
 			try{
+
 				socket.close();
 			}catch(IOException exp){}
 			return;
@@ -73,33 +74,35 @@ public class BToothConnectThread {
 			e.printStackTrace();
 		}
 	}
-	public void send() {
-		File file = new File(
-				Environment.getExternalStorageDirectory(),
-				"test.txt");
-
-		byte[] bytes = new byte[1024];
-
-		BufferedInputStream bis;
+	public void send2() {
 		try {
-			bis = new BufferedInputStream(new FileInputStream(file));
-			bis.read(bytes, 0, bytes.length);
-			OutputStream os = socket.getOutputStream();
-			os.write(bytes, 0, bytes.length);
-			os.flush();
-			//socket.close();
-/*
-            in = socket.getInputStream();
-            out = new FileOutputStream(file);
-            BufferedOutputStream bos = new BufferedOutputStream(out);
-            OutputStreamWriter osw = new OutputStreamWriter(out);
-            int bytesRead = in.read(bytes, 0, bytes.length);
-            out.write(file);
-            out.close();
-            socket.close();*/
+			out.write(3);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}}
+	public void send() {
+		try {
+			out.write(3);
+
+		String file_name=Environment.getExternalStorageDirectory().getPath()+"/test.pdf";
+		File myFile = new File(file_name);
+
+		byte[] mybytearray = new byte[(int)myFile.length()];
+		FileInputStream fis = new FileInputStream(myFile);
+			BufferedInputStream bis = new BufferedInputStream(fis, 8 * 1024);
+
+
+			byte[] buffer = new byte[8192];
+			int len;
+			while ((len = bis.read(buffer)) != -1) {
+				out.write(buffer, 0, len);
+			}
+			out.close();
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
 
 	}
 	

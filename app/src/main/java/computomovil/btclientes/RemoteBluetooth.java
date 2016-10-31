@@ -5,13 +5,17 @@ import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.File;
 
 public class RemoteBluetooth extends Activity {
 	
@@ -76,6 +80,17 @@ public class RemoteBluetooth extends Activity {
 
     public void sendFile(View view){
         thread1.send();
+     /*   thread1.send2();
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_SEND);
+        intent.setType("application/pdf");
+
+
+        String uri = Environment.getExternalStorageDirectory().getPath()+"/test.pdf";
+        System.out.println(uri);
+        intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(new File(uri)));
+        startActivity(intent);*/
+
     }
 
     @Override
