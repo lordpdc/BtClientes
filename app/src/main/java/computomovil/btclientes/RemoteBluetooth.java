@@ -4,6 +4,7 @@ package computomovil.btclientes;
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
+import android.content.ComponentName;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.net.Uri;
@@ -83,27 +84,17 @@ public class RemoteBluetooth extends Activity {
 
     public void sendFile(View view){
      //   thread1.send();
-       /* thread1.send2();
-        Intent intent = new Intent();
-        intent.setAction(Intent.ACTION_SEND);
+        thread1.send2();
+        Intent intent = new Intent(android.content.Intent.ACTION_SEND);
+        //intent.setAction(Intent.ACTION_SEND);
         intent.setType("application/pdf");
 
 
-        String uri = Environment.getExternalStorageDirectory().getPath()+"/test.pdf";
+        String uri = Environment.getExternalStorageDirectory().getPath().toString()+"/test.pdf";
         System.out.println(uri);
+        intent.setComponent(new ComponentName("com.android.bluetooth", "com.android.bluetooth.opp.BluetoothOppLauncherActivity"));
         intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(new File(uri)));
-        startActivity(intent);**/
-        thread1.send2();
-        String filePath = Environment.getExternalStorageDirectory().toString() + "/test.pdf";
-        System.out.println(filePath);
-
-        ContentValues values = new ContentValues();
-        values.put(BluetoothShare.URI, Uri.fromFile(new File(filePath)).toString());
-        values.put(BluetoothShare.DESTINATION, device.getAddress());
-        values.put(BluetoothShare.DIRECTION, BluetoothShare.DIRECTION_OUTBOUND);
-        Long ts = System.currentTimeMillis();
-        values.put(BluetoothShare.TIMESTAMP, ts);
-        Uri contentUri = getContentResolver().insert(BluetoothShare.CONTENT_URI, values);
+        startActivity(intent);
 
     }
 
@@ -135,6 +126,9 @@ public class RemoteBluetooth extends Activity {
                             .getString(ListDispActivity.EXTRA_DEVICE_ADDRESS);
                     // Get the BLuetoothDevice object
                      device = mBluetoothAdapter.getRemoteDevice(address);
+                    DeviceContain dc=DeviceContain.getInstance();
+                    dc.setDevice(device);
+
                     TextView txt = (TextView)findViewById(R.id.dispositivo);
                     txt.setText(device.getName());
 
