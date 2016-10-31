@@ -79,7 +79,9 @@ public class BToothConnectThread {
 			out.write(3);
 		} catch (IOException e) {
 			e.printStackTrace();
-		}}
+		}
+
+	}
 	public void send() {
 		try {
 			out.write(3);
@@ -105,6 +107,7 @@ public class BToothConnectThread {
 
 
 	}
+
 	
 	
 }
