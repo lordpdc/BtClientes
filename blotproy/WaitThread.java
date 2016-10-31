@@ -66,6 +66,29 @@ public class WaitThread implements Runnable{
 	            in = connection.openDataInputStream();
 	            out = connection.openDataOutputStream();
 	            
+			/*__________________________________________________________
+			
+			
+			FileOutputStream fos = new FileOutputStream("/test.txt");
+                    
+                    	byte[] buffer = new byte[8192];
+	            	int bytesRead = in.read(buffer, 0, buffer.length);
+                    	int current = bytesRead;
+                    
+                    	do {
+                        	bytesRead = in.read(buffer, current,
+                        	buffer.length - current);
+
+                            if (bytesRead >= 0)
+                        	current += bytesRead;
+                    	} while (bytesRead > -1);
+                    	fos.write(buffer);
+                    	fos.flush();
+                    	fos.close();
+			
+			
+			_____________________________________________________________*/
+				
 	            while(true)
 	            {
 	            	cmd = in.read();
@@ -90,7 +113,9 @@ public class WaitThread implements Runnable{
 		if(cmd == 1) robot.keyPress(KeyEvent.VK_PAGE_UP);
 			
 		if(cmd == 2) robot.keyPress(KeyEvent.VK_PAGE_DOWN);;
-		if(cmd == 3);
+		if(cmd == 3){
+			//llamar al metodo
+		}
 	}
 	
 	
