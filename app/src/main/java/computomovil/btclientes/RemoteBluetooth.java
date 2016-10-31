@@ -66,12 +66,16 @@ public class RemoteBluetooth extends Activity {
         startActivityForResult(intent,REQUEST_DEVICE_TO_CONNECT);
     }
 
-    public void pgDownClickListener(View view){
+    public void btnPrevius(View view){
         thread1.pgDown();
     }
 
-    public void pgUpClickListener(View view){
+    public void btnNext(View view){
         thread1.pgUp();
+    }
+
+    public void sendFile(View view){
+        thread1.send();
     }
 
     @Override
@@ -112,5 +116,4 @@ public class RemoteBluetooth extends Activity {
                 break;
         }
     }
-
 }

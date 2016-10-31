@@ -1,5 +1,8 @@
 package computomovil.btclientes;
 
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -9,6 +12,7 @@ import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
+import android.os.Environment;
 import android.widget.Toast;
 
 public class BToothConnectThread {
@@ -69,7 +73,33 @@ public class BToothConnectThread {
 			e.printStackTrace();
 		}
 	}
-	public void sendFile(){
+	public void send() {
+		File file = new File(
+				Environment.getExternalStorageDirectory(),
+				"test.txt");
+
+		byte[] bytes = new byte[1024];
+
+		BufferedInputStream bis;
+		try {
+			bis = new BufferedInputStream(new FileInputStream(file));
+			bis.read(bytes, 0, bytes.length);
+			OutputStream os = socket.getOutputStream();
+			os.write(bytes, 0, bytes.length);
+			os.flush();
+			//socket.close();
+/*
+            in = socket.getInputStream();
+            out = new FileOutputStream(file);
+            BufferedOutputStream bos = new BufferedOutputStream(out);
+            OutputStreamWriter osw = new OutputStreamWriter(out);
+            int bytesRead = in.read(bytes, 0, bytes.length);
+            out.write(file);
+            out.close();
+            socket.close();*/
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
 	}
 	

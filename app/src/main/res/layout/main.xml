@@ -16,10 +16,12 @@
         android:layout_height="wrap_content"
         android:text="Detectar Dispositivos" android:onClick="btnClickHandler"/>
     <Button
-        android:id="@+id/sendFile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enviar Archivo" android:onClick="btnSend"/>
+        android:text="Enviar Archivo"
+        android:id="@+id/button"
+        android:layout_gravity="center_horizontal"
+        android:onClick="sendFile"/>
     <Button
         android:id="@+id/nextPage"
         android:layout_width="wrap_content"
